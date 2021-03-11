@@ -30,12 +30,9 @@ namespace FinalProject.XUnitTest
         [InlineData(-2, -13, -13, -2)]
         [InlineData(int.MaxValue, 1001, 1001, int.MaxValue)]
         [InlineData(-1315, int.MinValue, int.MinValue, -1315)]
-        public void Swap_WhenValidABPassed_ShouldSwapValues(ref int a, ref int b, int expectedA, int expectedB)
+        public void Swap_WhenValidABPassed_ShouldSwapValues(ref int actualA, ref int actualB, int expectedA, int expectedB)
         {
-            Variables.Swap(ref a, ref b);
-
-            int actualA = a;
-            int actualB = b;
+            Variables.Swap(ref actualA, ref actualB);
 
             Assert.Equal(expectedA, actualA);
             Assert.Equal(expectedB, actualB);
@@ -47,7 +44,8 @@ namespace FinalProject.XUnitTest
         [InlineData(0, 12, 0, 0)]
         [InlineData(int.MaxValue, -105371, -20380, 22667)]
         [InlineData(-596, 33, -18, -2)]
-        public void DivisionAndRemainder_WhenValidABPassed_ShouldCalculateDivisionAndRemainder(int a, int b, int exceptedDivision, int exceptedRemainder)
+        public void DivisionAndRemainder_WhenValidABPassed_ShouldCalculateDivisionAndRemainder(
+            int a, int b, int exceptedDivision, int exceptedRemainder)
         {
             int[] actual = Variables.DivisionAndRemainder(a, b);
 
@@ -66,7 +64,8 @@ namespace FinalProject.XUnitTest
         [InlineData(3.51244, 9375.876, -28.46, -2677.437)]
         [InlineData(3, 0, 0, 0)]
         [InlineData(0.0015341, 1.203865, 1.19005, -9.005)]
-        public void Equation_WhenValidABCPassed_ShouldCalculateEquation(double a, double b, double c, double excepted)
+        public void Equation_WhenValidABCPassed_ShouldCalculateEquation(
+            double a, double b, double c, double excepted)
         {
             double actual = Variables.Equation(a, b, c);
 
@@ -84,7 +83,8 @@ namespace FinalProject.XUnitTest
         [InlineData(5, 9, 16, 3, -0.545, 11.727)]
         [InlineData(9.475, 3.512, -12.65, -1045, 47.39, -445.512)]
         [InlineData(-11.1, -9.35, 15.4, 14.05, 0.883, 0.452)]
-        public void StraightLineEquation_WhenValidX1X2Y1Y2Passed_ShouldCalculateEquation(double x1, double y1, double x2, double y2, double exceptedA, double exceptedB)
+        public void StraightLineEquation_WhenValidX1X2Y1Y2Passed_ShouldCalculateEquation(
+            double x1, double y1, double x2, double y2, double exceptedA, double exceptedB)
         {
             double[] actual = Variables.StraightLineEquation(x1, y1, x2, y2);
 
