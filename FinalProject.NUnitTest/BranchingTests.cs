@@ -14,11 +14,11 @@ namespace FinalProject.NUnitTest
         [TestCase(-1047.84579, -567.3485, -480.497)]
         [TestCase(-197.17838, -197.17838, 38879.314)]
         public static void GetResultAfterComparison_WhenValidABPassed_ShouldReturnResultAfterComparison(
-            double a, double b, double excepted)
+            double a, double b, double expected)
         {
             double actual = Branching.GetResultAfterComparison(a, b);
 
-            Assert.AreEqual(excepted, actual);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestCase(12.7, 3.4, Branching.Quater.First)]
@@ -29,11 +29,11 @@ namespace FinalProject.NUnitTest
         [TestCase(0, 3, Branching.Quater.CoordinateAxis)]
         [TestCase(3, 0, Branching.Quater.CoordinateAxis)]
         public static void FindQuater_WhenValidXYPassed_ShouldReturnEnumQuater(
-            double x, double y, Branching.Quater excepted)
+            double x, double y, Branching.Quater expected)
         {
             Branching.Quater actual = Branching.FindQuater(x, y);
 
-            Assert.AreEqual(excepted, actual);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestCase(1, 2, 3, 1, 2, 3)]
@@ -41,24 +41,24 @@ namespace FinalProject.NUnitTest
         [TestCase(3, 2, 1, 1, 2, 3)]
         [TestCase(2, 2, 1, 1, 2, 2)]
         public static void GetNumbersInAscendingOrder_WhenValidParametersPassed_ShouldReturnValuesInAscendingOrder(
-            ref int a, ref int b, ref int c, int exceptedA, int exceptedB, int exceptedC)
+            ref int a, ref int b, ref int c, int expectedA, int expectedB, int expectedC)
         {
             Branching.GetNumbersInAscendingOrder(ref a, ref b, ref c);
 
-            Assert.AreEqual(exceptedA, a);
-            Assert.AreEqual(exceptedB, b);
-            Assert.AreEqual(exceptedC, c);
+            Assert.AreEqual(expectedA, a);
+            Assert.AreEqual(expectedB, b);
+            Assert.AreEqual(expectedC, c);
         }
 
         [TestCase(1, -8, 12, new double[] { 6, 2 })]
         [TestCase(5, 3, 7, null)]
         [TestCase(1, -6, 9, new double[] { 3 })]
         public static void GetRootsOfSquareEquation_WhenValidABCPassed_ShouldReturnRoots(
-            double a, double b, double c, double[] excepted)
+            double a, double b, double c, double[] expected)
         {
             double[] actual = Branching.GetRootsOfSquareEquation(a, b, c);
 
-            Assert.AreEqual(excepted, actual);
+            Assert.AreEqual(expected, actual);
         }
 
         public static void GetRootsOfSquareEquation_WhenValidABCPassed_ShouldThrowDivideByZeroException()
