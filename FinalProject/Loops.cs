@@ -23,24 +23,24 @@ namespace FinalProject
 
         public static int[] GetNumbersFrom1To1000ThatDivisibleByGivenNumber(int number)
         {
-            if(number<1 || number > 1000)
+            if (number >= 1 && number <= 1000)
             {
-                throw new ArgumentOutOfRangeException("Invalid input");
-            }
+                int[] array = new int[1000 / number];
+                int size = 0;
 
-            int[] array = new int[1000 / number];
-            int size = 0;
-
-            for (int i = number; i <= 1000; i += number)
-            {
-                if (i % number == 0)
+                for (int i = number; i <= 1000; i += number)
                 {
-                    array[size] = i;
-                    ++size;
+                    if (i % number == 0)
+                    {
+                        array[size] = i;
+                        ++size;
+                    }
                 }
+
+                return array;
             }
 
-            return array;
+            throw new ArgumentOutOfRangeException("Invalid input");
         }
 
         public static int GetQuantityOfPositiveWholeNumbers(int number)
@@ -93,7 +93,7 @@ namespace FinalProject
 
         public static int GetNthNumberOfTheFibonacciSeries(int number)
         {
-            if(number < 1)
+            if (number < 1)
             {
                 throw new ArgumentException("Invalid input!");
             }
