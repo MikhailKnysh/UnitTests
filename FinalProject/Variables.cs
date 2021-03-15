@@ -11,13 +11,11 @@ namespace FinalProject
             if (a != b)
             {
                 result = (5 * a + b * b) / (b - a);
-            }
-            else
-            {
-                throw new DivideByZeroException("a == b");
+
+                return Math.Round(result, 3);
             }
 
-            return Math.Round(result, 3);
+            throw new DivideByZeroException("a == b");
         }
 
         public static void Swap(ref int a, ref int b)
@@ -36,13 +34,11 @@ namespace FinalProject
             {
                 resultOfDivision = a / b;
                 remainder = a % b;
-            }
-            else
-            {
-                throw new DivideByZeroException("a == b");
+
+                return new int[] { resultOfDivision, remainder };
             }
 
-            return new int[] { resultOfDivision, remainder };
+            throw new DivideByZeroException("a == b");
         }
 
         public static double Equation(double a, double b, double c)
@@ -52,29 +48,27 @@ namespace FinalProject
             if (a != 0)
             {
                 result = (c - b) / a;
-            }
-            else
-            {
-                throw new DivideByZeroException("a == 0");
+
+                return Math.Round(result, 3);
             }
 
-            return Math.Round(result, 3);
+            throw new DivideByZeroException("a == 0");
         }
 
         public static double[] StraightLineEquation(double x1, double y1, double x2, double y2)
         {
-            if (x1 == x2)
+            if (x1 != x2)
             {
-                throw new DivideByZeroException("x1 == x2");
+                double a = (y2 - y1) / (x2 - x1);
+                double b = y1 - a * x1;
+
+                return new double[] {
+                    Math.Round(a, 3),
+                    Math.Round(b, 3)
+                };
             }
 
-            double a = (y2 - y1) / (x2 - x1);
-            double b = y1 - a * x1;
-
-            return new double[] {
-                Math.Round(a, 3),
-                Math.Round(b, 3)
-            };
+            throw new DivideByZeroException("x1 == x2");
         }
     }
 }
