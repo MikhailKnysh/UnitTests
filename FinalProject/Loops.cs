@@ -269,7 +269,7 @@ namespace FinalProject
             return arr;
         }
 
-        public static bool IsContainEqualDigits(int a, int b)
+        public static bool IsContainsSameDigits(int a, int b)
         {
             bool result = false;
             string firstNumber = Math.Abs(a).ToString();

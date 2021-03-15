@@ -172,10 +172,10 @@ namespace FinalProject.NUnitTest
         [TestCase(0, 0, true)]
         [TestCase(50, 729, false)]
         [TestCase(-329467, -8, false)]
-        public void IsContainEqualDigits_WhenValidNumberPassed_ShouldReturnBool(
+        public void IsContainsSameDigits_WhenValidNumberPassed_ShouldReturnBool(
             int a, int b, bool expected)
         {
-            bool actual = Loops.IsContainEqualDigits(a, b);
+            bool actual = Loops.IsContainsSameDigits(a, b);
 
             Assert.AreEqual(expected, actual);
         }
