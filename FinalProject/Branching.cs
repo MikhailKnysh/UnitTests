@@ -70,32 +70,32 @@ namespace FinalProject
 
         public static double[] GetRootsOfSquareEquation(double a, double b, double c)
         {
-            if (a == 0)
+            if (a != 0)
             {
-                throw new DivideByZeroException("a == 0");
-            }
+                double D = b * b - 4 * a * c;
+                double[] result;
 
-            double D = b * b - 4 * a * c;
-            double[] result;
-
-            if (D > 0)
-            {
-                result = new[]
+                if (D > 0)
                 {
-                        (-b + Math.Sqrt(D)) / (2 * a),
-                        (-b - Math.Sqrt(D)) / (2 * a)
-                    };
-            }
-            else if (D == 0)
-            {
-                result = new[] { -b / (2 * a) };
-            }
-            else
-            {
-                result = null;
+                    result = new[]
+                    {
+                            (-b + Math.Sqrt(D)) / (2 * a),
+                            (-b - Math.Sqrt(D)) / (2 * a)
+                        };
+                }
+                else if (D == 0)
+                {
+                    result = new[] { -b / (2 * a) };
+                }
+                else
+                {
+                    result = null;
+                }
+
+                return result;
             }
 
-            return result;
+            throw new DivideByZeroException("a == 0");
         }
 
         public static string GetNumberByWords(int number)
