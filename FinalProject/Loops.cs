@@ -93,23 +93,23 @@ namespace FinalProject
 
         public static int GetNthNumberOfTheFibonacciSeries(int number)
         {
-            if (number < 1)
+            if (number >= 1)
             {
-                throw new ArgumentException("Invalid input!");
+                int first = 1;
+                int second = 1;
+                int result;
+
+                for (int i = 2; i <= number; i++)
+                {
+                    result = first + second;
+                    first = second;
+                    second = result;
+                }
+
+                return first;
             }
 
-            int first = 1;
-            int second = 1;
-            int result;
-
-            for (int i = 2; i <= number; i++)
-            {
-                result = first + second;
-                first = second;
-                second = result;
-            }
-
-            return first;
+            throw new ArgumentException("Invalid input!");
         }
 
         public static int GetResultOfEuclideanAlgorithm(int a, int b)
