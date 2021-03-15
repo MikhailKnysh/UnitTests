@@ -27,10 +27,10 @@ namespace FinalProject
             b = temp;
         }
 
-        public static double[] DivisionAndRemainder(double a, double b)
+        public static int[] DivisionAndRemainder(int a, int b)
         {
-            double resultOfDivision;
-            double remainder;
+            int resultOfDivision;
+            int remainder;
 
             if (b != 0)
             {
@@ -42,7 +42,7 @@ namespace FinalProject
                 throw new DivideByZeroException("a == b");
             }
 
-            return new double[] { resultOfDivision, remainder };
+            return new int[] { resultOfDivision, remainder };
         }
 
         public static double Equation(double a, double b, double c)
@@ -58,15 +58,23 @@ namespace FinalProject
                 throw new DivideByZeroException("a == 0");
             }
 
-            return result;
+            return Math.Round(result, 3);
         }
 
         public static double[] StraightLineEquation(double x1, double y1, double x2, double y2)
         {
+            if (x1 == x2)
+            {
+                throw new DivideByZeroException("x1 == x2");
+            }
+
             double a = (y2 - y1) / (x2 - x1);
             double b = y1 - a * x1;
 
-            return new double[] { a, b };
+            return new double[] {
+                Math.Round(a, 3),
+                Math.Round(b, 3)
+            };
         }
     }
 }
