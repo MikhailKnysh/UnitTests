@@ -70,7 +70,7 @@ namespace FinalProject
             return sum;
         }
 
-        public static int[] ReverceArray(int[] arr)
+        public static int[] ReverseArray(int[] arr)
         {
             ValidateArrayState(arr);
 
