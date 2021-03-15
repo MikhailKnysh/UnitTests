@@ -91,6 +91,11 @@ namespace FinalProjectLibrary
 
         public static int GetCounterOfAllSmallestNeighbours(int[,] matrix)
         {
+            if (matrix == null)
+            {
+                throw new ArgumentException("Array is empty!");
+            }
+
             int counter = 0;
 
             for (int i = 0; i < matrix.GetLength(0); ++i)
