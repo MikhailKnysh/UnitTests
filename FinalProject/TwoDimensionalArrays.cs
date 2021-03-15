@@ -6,8 +6,6 @@ namespace FinalProjectLibrary
     {
         public static int FindMinElementOfTheTwoDimArray(int[,] matrix)
         {
-            ValidateMatrixState(matrix);
-
             int[] minIndex = FindIndexOfMinElementOfTheTwoDimArray(matrix);
 
             return matrix[minIndex[0], minIndex[1]];
@@ -15,8 +13,6 @@ namespace FinalProjectLibrary
 
         public static int FindMaxElementOfTheTwoDimArray(int[,] matrix)
         {
-            ValidateMatrixState(matrix);
-
             int[] maxIndex = FindIndexOfMaxElementOfTheTwoDimArray(matrix);
 
             return matrix[maxIndex[0], maxIndex[1]]; ;
