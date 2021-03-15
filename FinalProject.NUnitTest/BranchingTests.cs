@@ -39,7 +39,7 @@ namespace FinalProject.NUnitTest
         [TestCase(3, 2, 1, 1, 2, 3)]
         [TestCase(2, 2, 1, 1, 2, 2)]
         public static void GetNumbersInAscendingOrder_WhenValidParametersPassed_ShouldReturnValuesInAscendingOrder(
-            ref int a, ref int b, ref int c, int expectedA, int expectedB, int expectedC)
+            int a, int b, int c, int expectedA, int expectedB, int expectedC)
         {
             Branching.GetNumbersInAscendingOrder(ref a, ref b, ref c);
 
