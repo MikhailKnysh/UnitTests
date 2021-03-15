@@ -19,17 +19,17 @@ namespace FinalProject.NUnitTest
             Assert.AreEqual(expected, actual);
         }
 
-        [TestCase(12.7, 3.4, Branching.Quater.First)]
-        [TestCase(-12.7, 3.4, Branching.Quater.Second)]
-        [TestCase(-12.7, -3.4, Branching.Quater.Third)]
-        [TestCase(12.7, -3.45, Branching.Quater.Fourth)]
-        [TestCase(0, 0, Branching.Quater.Center)]
-        [TestCase(0, 3, Branching.Quater.CoordinateAxis)]
-        [TestCase(3, 0, Branching.Quater.CoordinateAxis)]
+        [TestCase(12.7, 3.4, Quater.First)]
+        [TestCase(-12.7, 3.4, Quater.Second)]
+        [TestCase(-12.7, -3.4, Quater.Third)]
+        [TestCase(12.7, -3.45, Quater.Fourth)]
+        [TestCase(0, 0, Quater.Center)]
+        [TestCase(0, 3, Quater.CoordinateAxis)]
+        [TestCase(3, 0, Quater.CoordinateAxis)]
         public static void FindQuater_WhenValidXYPassed_ShouldReturnEnumQuater(
-            double x, double y, Branching.Quater expected)
+            double x, double y, Quater expected)
         {
-            Branching.Quater actual = Branching.FindQuater(x, y);
+            Quater actual = Branching.FindQuater(x, y);
 
             Assert.AreEqual(expected, actual);
         }

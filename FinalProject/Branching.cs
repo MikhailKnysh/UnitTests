@@ -4,16 +4,6 @@ namespace FinalProject
 {
     public static class Branching
     {
-        public enum Quater
-        {
-            Center,
-            CoordinateAxis,
-            First,
-            Second,
-            Third,
-            Fourth
-        }
-
         public static double GetResultAfterComparison(double a, double b)
         {
             double result;
