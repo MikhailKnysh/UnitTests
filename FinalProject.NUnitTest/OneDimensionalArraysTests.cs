@@ -150,6 +150,7 @@ namespace FinalProject.NUnitTest
             public static int[] GetMock(int number)
             {
                 int[] result = new int[0];
+
                 switch (number)
                 {
                     case 1:
