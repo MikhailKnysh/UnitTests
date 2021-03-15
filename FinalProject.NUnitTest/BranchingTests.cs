@@ -1,7 +1,5 @@
 ﻿using NUnit.Framework;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace FinalProject.NUnitTest
 {
@@ -91,7 +89,7 @@ namespace FinalProject.NUnitTest
         [TestCase(110)]
         public static void GetNumberByWords_WhenNumberNotBelongsToTheInterval_ShouldThrowDivideByZeroException(int num)
         {
-            Assert.Throws<ArgumentException>(() => Branching.GetNumberByWords(num));
+            Assert.Throws<ArgumentOutOfRangeException>(() => Branching.GetNumberByWords(num));
         }
     }
 }
