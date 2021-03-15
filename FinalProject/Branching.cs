@@ -100,30 +100,30 @@ namespace FinalProject
 
         public static string GetNumberByWords(int number)
         {
-            if (number < 10 || number > 99)
+            if (number >= 10 && number <= 99)
             {
-                throw new ArgumentOutOfRangeException("Invalid number");
+                string result;
+                string[] units = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+                string[] elevenToNineteen = { "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" };
+                string[] tens = { "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
+
+                if (number >= 11 && number <= 19)
+                {
+                    result = elevenToNineteen[number % 10 - 1];
+                }
+                else if (number % 10 == 0)
+                {
+                    result = tens[number / 10 - 1];
+                }
+                else
+                {
+                    result = tens[number / 10 - 1] + " " + units[number % 10];
+                }
+
+                return result;
             }
 
-            string result;
-            string[] units = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
-            string[] elevenToNineteen = { "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" };
-            string[] tens = { "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
-
-            if (number >= 11 && number <= 19)
-            {
-                result = elevenToNineteen[number % 10 - 1];
-            }
-            else if (number % 10 == 0)
-            {
-                result = tens[number / 10 - 1];
-            }
-            else
-            {
-                result = tens[number / 10 - 1] + " " + units[number % 10];
-            }
-
-            return result;
+            throw new ArgumentOutOfRangeException("Invalid number");
         }
 
         private static void Swap(ref int a, ref int b)
