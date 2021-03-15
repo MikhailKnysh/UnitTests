@@ -47,7 +47,7 @@ namespace FinalProject
         {
             int counter = 0;
 
-            for (int i = number/2; i >= 1; i--)
+            for (int i = number / 2; i >= 1; i--)
             {
                 if (i * i < number)
                 {
