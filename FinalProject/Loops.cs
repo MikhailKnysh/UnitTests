@@ -46,14 +46,13 @@ namespace FinalProject
         public static int GetQuantityOfPositiveWholeNumbers(int number)
         {
             int counter = 0;
-            int high = number / 2 + 1;
 
-            for (int i = 1; i <= high; i++)
+            for (int i = number/2; i >= 1; i--)
             {
                 if (i * i < number)
                 {
-                    counter++;
-                    Console.WriteLine(i);
+                    counter = i;
+                    break;
                 }
             }
 
