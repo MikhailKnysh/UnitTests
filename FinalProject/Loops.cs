@@ -172,11 +172,11 @@ namespace FinalProject
 
             while (number != 0)
             {
-                tempDigit = number % 10;
+                tempDigit = Math.Abs(number % 10);
 
-                if (tempDigit % 2 != 0)
+                if (tempDigit % 2 == 1)
                 {
-                    counter++;
+                    ++counter;
                 }
 
                 number /= 10;
