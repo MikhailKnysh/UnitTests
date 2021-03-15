@@ -92,7 +92,7 @@ namespace FinalProject.NUnitTest
 
         [TestCase(-10)]
         [TestCase(0)]
-        public void GetNthNumberOfTheFibonacciSeries_WhenNumberLessThenOne_ShoulThrowArgumentException(
+        public void GetNthNumberOfTheFibonacciSeries_WhenNumberLessThenOne_ShouldThrowArgumentException(
             int number)
         {
             Assert.Throws<ArgumentException>(() => Loops.GetNthNumberOfTheFibonacciSeries(number));
