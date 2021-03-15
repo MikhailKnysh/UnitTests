@@ -1,13 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace FinalProject
 {
     public static class Loops
     {
-        public static double GetPow(double number, double power)
+        public static int GetPow(int number, int power)
         {
-            double result = number;
+            int result = number;
+
+            if (power == 0)
+            {
+                result = 1;
+            }
 
             for (int i = 1; i < power; i++)
             {
@@ -19,24 +23,20 @@ namespace FinalProject
 
         public static int[] GetNumbersFrom1To1000ThatDivisibleByGivenNumber(int number)
         {
-            int counter = 0;
-
-            for (int i = 1; i <= 1000; i++)
+            if(number<1 || number > 1000)
             {
-                if (i % number == 0)
-                {
-                    ++counter;
-                }
+                throw new ArgumentOutOfRangeException("Invalid input");
             }
 
-            int[] array = new int[counter];
+            int[] array = new int[1000 / number];
             int size = 0;
 
-            for (int i = 1; i <= 1000; i++)
+            for (int i = number; i <= 1000; i += number)
             {
                 if (i % number == 0)
                 {
-                    array[size++] = i;
+                    array[size] = i;
+                    ++size;
                 }
             }
 
@@ -46,12 +46,14 @@ namespace FinalProject
         public static int GetQuantityOfPositiveWholeNumbers(int number)
         {
             int counter = 0;
+            int high = number / 2 + 1;
 
-            for (int i = 1; i <= i/2; i++)
+            for (int i = 1; i <= high; i++)
             {
                 if (i * i < number)
                 {
                     counter++;
+                    Console.WriteLine(i);
                 }
             }
 
@@ -67,6 +69,7 @@ namespace FinalProject
                 if (number % i == 0)
                 {
                     greatestDivisor = i;
+                    break;
                 }
             }
 
@@ -90,6 +93,11 @@ namespace FinalProject
 
         public static int GetNthNumberOfTheFibonacciSeries(int number)
         {
+            if(number < 1)
+            {
+                throw new ArgumentException("Invalid input!");
+            }
+
             int first = 1;
             int second = 1;
             int result;
@@ -104,7 +112,7 @@ namespace FinalProject
             return first;
         }
 
-        public static int EuclideanAlgorithm(int a, int b)
+        public static int GetResultOfEuclideanAlgorithm(int a, int b)
         {
             while (a != b)
             {
@@ -121,7 +129,7 @@ namespace FinalProject
             return a;
         }
 
-        public static double BinarySearchForCubicRoot(int value)
+        public static int GetResultOfBinarySearchForCubicRoot(int value)
         {
             int low = 0;
             int num = Math.Abs(value);
@@ -158,7 +166,7 @@ namespace FinalProject
             }
         }
 
-        public static int CountOddDigits(int number)
+        public static int GetCounterOfOddDigits(int number)
         {
             int counter = 0;
             int tempDigit;
@@ -178,7 +186,7 @@ namespace FinalProject
             return counter;
         }
 
-        public static int MirrorNumber(int number)
+        public static int GetMirrorNumber(int number)
         {
             int resultNumber = 0;
 
@@ -192,7 +200,7 @@ namespace FinalProject
             return resultNumber / 10;
         }
 
-        public static int CountNumbersInRange(int number)//
+        public static int[] GetArrayOfNumbersInRange(int number)
         {
             int counter = 0;
             int tempDigit;
@@ -200,8 +208,8 @@ namespace FinalProject
 
             for (int j = 1; j <= number; j++)
             {
-                int evenDigitSum = 0;
-                int oddDigitsSum = 0;
+                int digitsSum = 0;
+
                 i = j;
 
                 while (i != 0)
@@ -210,34 +218,66 @@ namespace FinalProject
 
                     if (tempDigit % 2 == 0)
                     {
-                        evenDigitSum += tempDigit;
+                        digitsSum += tempDigit;
                     }
                     else
                     {
-                        oddDigitsSum += tempDigit;
+                        digitsSum -= tempDigit;
                     }
 
                     i /= 10;
                 }
 
-                if (evenDigitSum > oddDigitsSum)
+                if (digitsSum > 0)
                 {
                     counter++;
                 }
             }
 
-            return counter;
+            int[] arr = new int[counter];
+            int index = 0;
+
+            for (int j = 1; j <= number; j++)
+            {
+                int digitsSum = 0;
+
+                i = j;
+
+                while (i != 0)
+                {
+                    tempDigit = i % 10;
+
+                    if (tempDigit % 2 == 0)
+                    {
+                        digitsSum += tempDigit;
+                    }
+                    else
+                    {
+                        digitsSum -= tempDigit;
+                    }
+
+                    i /= 10;
+                }
+
+                if (digitsSum > 0)
+                {
+                    arr[index] = j;
+                    ++index;
+                }
+            }
+
+            return arr;
         }
 
-        public static bool ContainEqualDigits(int a, int b)
+        public static bool IsContainEqualDigits(int a, int b)
         {
             bool result = false;
-            string firstNumber = a.ToString();
-            string secondNumber = b.ToString();
+            string firstNumber = Math.Abs(a).ToString();
+            string secondNumber = Math.Abs(b).ToString();
 
             for (int i = 0; i < firstNumber.Length; i++)
             {
-                if (StringElementEqualsToChar(secondNumber, firstNumber[i]))
+                if (IsStringElementEqualsToChar(secondNumber, firstNumber[i]))
                 {
                     result = true;
                     break;
@@ -247,7 +287,7 @@ namespace FinalProject
             return result;
         }
 
-        private static bool StringElementEqualsToChar(string str, char ch)
+        private static bool IsStringElementEqualsToChar(string str, char ch)
         {
             bool flag = false;
 
