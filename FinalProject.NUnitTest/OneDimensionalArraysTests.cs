@@ -19,7 +19,7 @@ namespace FinalProject.NUnitTest
                     OneDimensionalArrays.FindIndexOfMaxElementOfTheArray(arr);
                     OneDimensionalArrays.GetSumOfArrayElementsWithOddIndexes(arr);
                     OneDimensionalArrays.ReverseArray(arr);
-                    OneDimensionalArrays.CountOddElementsOfTheArray(arr);
+                    OneDimensionalArrays.GetCountOddElementsOfTheArray(arr);
                     OneDimensionalArrays.SwapHalves(arr);
                     OneDimensionalArrays.BubbleSort(arr);
                     OneDimensionalArrays.SelectionSort(arr);
@@ -104,10 +104,10 @@ namespace FinalProject.NUnitTest
             [TestCase(new int[] { 1 }, 1)]
             [TestCase(new int[] { 1, 2 }, 1)]
             [TestCase(new int[] { 11, 2, 3, 4, -5, 6, 7, -8 }, 4)]
-            public void CountOddElementsOfTheArray_WhenValidArrayPassed_ShouldReturnCounter(
+            public void GetCountOddElementsOfTheArray_WhenValidArrayPassed_ShouldReturnCounter(
             int[] input, int expected)
             {
-                int actual = OneDimensionalArrays.CountOddElementsOfTheArray(input);
+                int actual = OneDimensionalArrays.GetCountOddElementsOfTheArray(input);
 
                 Assert.AreEqual(expected, actual);
             }

@@ -82,7 +82,7 @@ namespace FinalProject
             return arr;
         }
 
-        public static int CountOddElementsOfTheArray(int[] arr)
+        public static int GetCountOddElementsOfTheArray(int[] arr)
         {
             ValidateArrayState(arr);
 
