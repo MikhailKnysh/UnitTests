@@ -5,7 +5,6 @@ namespace FinalProject.NUnitTest
 {
     class OneDimensionalArraysTests
     {
-
         [TestCase(1, -1422)]
         [TestCase(2, -1523)]
         [TestCase(3, -1794)]

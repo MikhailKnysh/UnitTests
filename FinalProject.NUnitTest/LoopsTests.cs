@@ -166,7 +166,6 @@ namespace FinalProject.NUnitTest
             Assert.AreEqual(expected, actual);
         }
 
-        //How should I call this method?
         [TestCase(-5, 12345, true)]
         [TestCase(213, -2, true)]
         [TestCase(0, 0, true)]
