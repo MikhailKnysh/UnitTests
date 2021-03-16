@@ -8,34 +8,14 @@ namespace FinalProject
         {
             ValidateArrayState(arr);
 
-            int min = arr[0];
-
-            for (int i = 1; i < arr.Length; i++)
-            {
-                if (arr[i] < min)
-                {
-                    min = arr[i];
-                }
-            }
-
-            return min;
+            return arr[FindIndexOfMinElementOfTheArray(arr)];
         }
 
         public static int FindMaxElementOfTheArray(int[] arr)
         {
             ValidateArrayState(arr);
 
-            int max = arr[0];
-
-            for (int i = 1; i < arr.Length; i++)
-            {
-                if (arr[i] > max)
-                {
-                    max = arr[i];
-                }
-            }
-
-            return max;
+            return arr[FindIndexOfMaxElementOfTheArray(arr)];
         }
 
         public static int FindIndexOfMinElementOfTheArray(int[] arr)
@@ -82,18 +62,15 @@ namespace FinalProject
 
             int sum = 0;
 
-            for (int i = 0; i < arr.Length; i++)
+            for (int i = 1; i < arr.Length; i += 2)
             {
-                if (i % 2 == 1)
-                {
-                    sum += arr[i];
-                }
+                sum += arr[i];
             }
 
             return sum;
         }
 
-        public static int[] ReverceArray(int[] arr)
+        public static int[] ReverseArray(int[] arr)
         {
             ValidateArrayState(arr);
 
@@ -105,7 +82,7 @@ namespace FinalProject
             return arr;
         }
 
-        public static int CountOddElementsOfTheArray(int[] arr)
+        public static int GetCountOddElementsOfTheArray(int[] arr)
         {
             ValidateArrayState(arr);
 
@@ -187,7 +164,7 @@ namespace FinalProject
         {
             if (arr == null || arr.Length == 0)
             {
-                throw new Exception("Array is empty!");
+                throw new ArgumentException("Array is empty!");
             }
         }
     }

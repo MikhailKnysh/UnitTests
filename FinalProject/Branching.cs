@@ -2,93 +2,76 @@
 
 namespace FinalProject
 {
-    class Branching
+    public static class Branching
     {
-        public enum Quater
+        public static double GetResultAfterComparison(double a, double b)
         {
-            Center,
-            CoordinateAxis,
-            First,
-            Second,
-            Third,
-            Fourth
+            double result;
+
+            if (a > b)
+            {
+                result = a + b;
+            }
+            else if (a == b)
+            {
+                result = a * b;
+            }
+            else
+            {
+                result = a - b;
+            }
+
+            return Math.Round(result, 3);
         }
 
-        public static class Tasks
+        public static Quater FindQuater(double x, double y)
         {
-            public static double GetResultAfterComparison(double a, double b)
+            Quater quater = Quater.CoordinateAxis;
+
+            if (x > 0 && y > 0)
             {
-                double result;
-
-                if (a > b)
-                {
-                    result = a + b;
-                }
-                else if (a == b)
-                {
-                    result = a * b;
-                }
-                else
-                {
-                    result = a - b;
-                }
-
-                return result;
+                quater = Quater.First;
+            }
+            else if (x < 0 && y > 0)
+            {
+                quater = Quater.Second;
+            }
+            else if (x < 0 && y < 0)
+            {
+                quater = Quater.Third;
+            }
+            else if (x > 0 && y < 0)
+            {
+                quater = Quater.Fourth;
+            }
+            else if (x == 0 && y == 0)
+            {
+                quater = Quater.Center;
             }
 
-            public static Quater FindQuater(double x, double y)
+            return quater;
+        }
+
+        public static void GetNumbersInAscendingOrder(ref int a, ref int b, ref int c)
+        {
+            if (a > b)
             {
-                Quater quater = Quater.CoordinateAxis;
-
-                if (x > 0 && y > 0)
-                {
-                    quater = Quater.First;
-                }
-                else if (x < 0 && y > 0)
-                {
-                    quater = Quater.Second;
-                }
-                else if (x < 0 && y < 0)
-                {
-                    quater = Quater.Third;
-                }
-                else if (x > 0 && y < 0)
-                {
-                    quater = Quater.Fourth;
-                }
-                else if (x == 0 && y == 0)
-                {
-                    quater = Quater.Center;
-                }
-
-                return quater;
+                Swap(ref a, ref b);
             }
-
-            public static double[] GetNumbersInAscendingOrder(double a, double b, double c)
+            if (a > c)
             {
-                if (a > b)
-                {
-                    Swap(ref a, ref b);
-                }
-                if (a > c)
-                {
-                    Swap(ref a, ref c);
-                }
-                if (b > c)
-                {
-                    Swap(ref b, ref c);
-                }
-
-                return new[] { a, b, c };
+                Swap(ref a, ref c);
             }
-
-            public static double[] GetRootsOfSquareEquation(double a, double b, double c)
+            if (b > c)
             {
-                if (a == 0)
-                {
-                    throw new DivideByZeroException("a == 0");
-                }
+                Swap(ref b, ref c);
+            }
+        }
 
+        public static double[] GetRootsOfSquareEquation(double a, double b, double c)
+        {
+            if (a != 0)
+            {
                 double D = b * b - 4 * a * c;
                 double[] result;
 
@@ -96,9 +79,9 @@ namespace FinalProject
                 {
                     result = new[]
                     {
-                        (-b + Math.Sqrt(D)) / (2 * a),
-                        (-b - Math.Sqrt(D)) / (2 * a)
-                    };
+                            (-b + Math.Sqrt(D)) / (2 * a),
+                            (-b - Math.Sqrt(D)) / (2 * a)
+                        };
                 }
                 else if (D == 0)
                 {
@@ -106,41 +89,49 @@ namespace FinalProject
                 }
                 else
                 {
-                    result = new double[] { };
+                    result = null;
                 }
 
                 return result;
             }
 
-            public static string GetNumberByWords(int number)
+            throw new DivideByZeroException("a == 0");
+        }
+
+        public static string GetNumberByWords(int number)
+        {
+            if (number >= 10 && number <= 99)
             {
                 string result;
                 string[] units = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
                 string[] elevenToNineteen = { "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" };
                 string[] tens = { "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
 
-                if (number >= 11 && number <= 19)
+                if (number >= 20 && number % 10 != 0)
                 {
-                    result = elevenToNineteen[number % 10 - 1];
+                    result = tens[number / 10 - 1] + " " + units[number % 10];
                 }
-                else if (number % 10 == 0)
+                else if(number %10 == 0)
                 {
                     result = tens[number / 10 - 1];
                 }
                 else
                 {
-                    result = tens[number / 10 - 1] + " " + units[number % 10];
+                    result = elevenToNineteen[number % 10 - 1];
                 }
 
                 return result;
             }
 
-            private static void Swap(ref double a, ref double b)
-            {
-                double temp = a;
-                a = b;
-                b = temp;
-            }
+            throw new ArgumentOutOfRangeException("Invalid number");
         }
+
+        private static void Swap(ref int a, ref int b)
+        {
+            int temp = a;
+            a = b;
+            b = temp;
+        }
+
     }
 }

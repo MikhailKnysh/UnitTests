@@ -2,71 +2,36 @@
 
 namespace FinalProjectLibrary
 {
-    class TwoDimensionalArrays
+    public class TwoDimensionalArrays
     {
-        public static int FindMinElementOfTheTwoDimArray(int[,] arr)
+        public static int FindMinElementOfTheTwoDimArray(int[,] matrix)
         {
-            if (arr == null || arr.Length == 0)
-            {
-                throw new Exception("Array is empty!");
-            }
+            int[] minIndex = FindIndexOfMinElementOfTheTwoDimArray(matrix);
 
-            int min = arr[0, 0];
-
-            for (int i = 0; i < arr.GetLength(0); i++)
-            {
-                for (int j = 0; j < arr.GetLength(1); j++)
-                {
-                    if (arr[i, j] < min)
-                    {
-                        min = arr[i, j];
-                    }
-                }
-            }
-
-            return min;
+            return matrix[minIndex[0], minIndex[1]];
         }
 
-        public static int FindMaxElementOfTheTwoDimArray(int[,] arr)
+        public static int FindMaxElementOfTheTwoDimArray(int[,] matrix)
         {
-            if (arr == null || arr.Length == 0)
-            {
-                throw new Exception("Array is empty!");
-            }
+            int[] maxIndex = FindIndexOfMaxElementOfTheTwoDimArray(matrix);
 
-            int max = arr[0, 0];
-
-            for (int i = 0; i < arr.GetLength(0); i++)
-            {
-                for (int j = 0; j < arr.GetLength(1); j++)
-                {
-                    if (arr[i, j] > max)
-                    {
-                        max = arr[i, j];
-                    }
-                }
-            }
-
-            return max;
+            return matrix[maxIndex[0], maxIndex[1]]; ;
         }
 
-        public static int[] FindIndexOfMinElementOfTheTwoDimArray(int[,] arr)
+        public static int[] FindIndexOfMinElementOfTheTwoDimArray(int[,] matrix)
         {
-            if (arr == null || arr.Length == 0)
-            {
-                throw new Exception("Array is empty!");
-            }
+            ValidateMatrixState(matrix);
 
             int[] minIndex = new int[] { 0, 0 };
-            int min = arr[0, 0];
+            int min = matrix[0, 0];
 
-            for (int i = 0; i < arr.GetLength(0); i++)
+            for (int i = 0; i < matrix.GetLength(0); i++)
             {
-                for (int j = 0; j < arr.GetLength(1); j++)
+                for (int j = 0; j < matrix.GetLength(1); j++)
                 {
-                    if (arr[i, j] < min)
+                    if (matrix[i, j] < min)
                     {
-                        min = arr[i, j];
+                        min = matrix[i, j];
                         minIndex[0] = i;
                         minIndex[1] = j;
                     }
@@ -76,23 +41,20 @@ namespace FinalProjectLibrary
             return minIndex;
         }
 
-        public static int[] FindIndexOfMaxElementOfTheTwoDimArray(int[,] arr)
+        public static int[] FindIndexOfMaxElementOfTheTwoDimArray(int[,] matrix)
         {
-            if (arr == null || arr.Length == 0)
-            {
-                throw new Exception("Array is empty!");
-            }
+            ValidateMatrixState(matrix);
 
             int[] maxIndex = new int[] { 0, 0 };
-            int max = arr[0, 0];
+            int max = matrix[0, 0];
 
-            for (int i = 0; i < arr.GetLength(0); i++)
+            for (int i = 0; i < matrix.GetLength(0); i++)
             {
-                for (int j = 0; j < arr.GetLength(1); j++)
+                for (int j = 0; j < matrix.GetLength(1); j++)
                 {
-                    if (arr[i, j] > max)
+                    if (matrix[i, j] > max)
                     {
-                        max = arr[i, j];
+                        max = matrix[i, j];
                         maxIndex[0] = i;
                         maxIndex[1] = j;
                     }
@@ -123,27 +85,34 @@ namespace FinalProjectLibrary
             return true;
         }
 
-        public static int FifthTask(int[,] matrix)
+        public static int GetCounterOfAllSmallestNeighbours(int[,] matrix)
         {
-            int counter = 0;
-
-            for (int i = 0; i < matrix.GetLength(0); ++i)
+            if (matrix != null)
             {
-                for (int j = 0; j < matrix.GetLength(1); ++j)
+                int counter = 0;
+
+                for (int i = 0; i < matrix.GetLength(0); ++i)
                 {
-                    if (CheckNeighbours(matrix, i, j))
+                    for (int j = 0; j < matrix.GetLength(1); ++j)
                     {
-                        ++counter;
-                        Console.WriteLine($"find elem: i = {i} j = {j} matrix[{i},{j}] = {matrix[i, j]}");
+                        if (CheckNeighbours(matrix, i, j))
+                        {
+                            ++counter;
+                            Console.WriteLine($"find elem: i = {i} j = {j} matrix[{i},{j}] = {matrix[i, j]}");
+                        }
                     }
                 }
+
+                return counter;
             }
 
-            return counter;
+            throw new ArgumentException("Array is empty!");
         }
 
         public static int[,] TransposeMatrix(int[,] matrix)
         {
+            ValidateMatrixState(matrix);
+
             int[,] transposed = new int[matrix.GetLength(1), matrix.GetLength(0)];
 
             for (int i = 0; i < matrix.GetLength(0); i++)
@@ -155,6 +124,14 @@ namespace FinalProjectLibrary
             }
 
             return transposed;
+        }
+
+        private static void ValidateMatrixState(int[,] arr)
+        {
+            if (arr == null || arr.Length == 0)
+            {
+                throw new ArgumentException("Array is empty!");
+            }
         }
     }
 }
