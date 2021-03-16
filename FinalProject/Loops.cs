@@ -240,7 +240,6 @@ namespace FinalProject
             for (int j = 1; j <= number; j++)
             {
                 int digitsSum = 0;
-
                 i = j;
 
                 while (i != 0)
