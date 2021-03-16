@@ -107,17 +107,17 @@ namespace FinalProject
                 string[] elevenToNineteen = { "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" };
                 string[] tens = { "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
 
-                if (number >= 11 && number <= 19)
+                if (number >= 20 && number % 10 != 0)
                 {
-                    result = elevenToNineteen[number % 10 - 1];
+                    result = tens[number / 10 - 1] + " " + units[number % 10];
                 }
-                else if (number % 10 == 0)
+                else if(number %10 == 0)
                 {
                     result = tens[number / 10 - 1];
                 }
                 else
                 {
-                    result = tens[number / 10 - 1] + " " + units[number % 10];
+                    result = elevenToNineteen[number % 10 - 1];
                 }
 
                 return result;
