@@ -47,18 +47,17 @@ namespace FinalProject
 
         public static int GetQuantityOfPositiveWholeNumbers(int number)
         {
-            int counter = 0;
+            int i;
 
-            for (int i = number / 2; i >= 1; i--)
+            for (i = number / 2; i >= 1; i--)
             {
                 if (i * i < number)
                 {
-                    counter = i;
                     break;
                 }
             }
 
-            return counter;
+            return i;
         }
 
         public static int GetGreatestDivisor(int number)

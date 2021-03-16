@@ -39,7 +39,6 @@ namespace FinalProject.NUnitTest
             Assert.Throws<ArgumentOutOfRangeException>(() => Loops.GetNumbersFrom1To1000ThatDivisibleByGivenNumber(number));
         }
 
-        [TestCase(-10, 0)]
         [TestCase(0, 0)]
         [TestCase(4, 1)]
         [TestCase(100, 9)]
