@@ -32,8 +32,7 @@ namespace FinalProject
                 {
                     if (i % number == 0)
                     {
-                        array[size] = i;
-                        ++size;
+                        array[size++] = i;
                     }
                 }
 
@@ -260,8 +259,7 @@ namespace FinalProject
 
                 if (digitsSum > 0)
                 {
-                    arr[index] = j;
-                    ++index;
+                    arr[index++] = j;
                 }
             }
 
