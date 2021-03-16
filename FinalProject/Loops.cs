@@ -8,15 +8,18 @@ namespace FinalProject
         {
             int result = number;
 
-            if (power == 0)
+            if (power != 0)
+            {
+                for (int i = 1; i < power; i++)
+                {
+                    result *= number;
+                }
+            }
+            else
             {
                 result = 1;
             }
 
-            for (int i = 1; i < power; i++)
-            {
-                result *= number;
-            }
 
             return result;
         }
